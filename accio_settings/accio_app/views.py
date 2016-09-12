@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.core import serializers
 from accio_app.acr import acr
+from .utilities import createTrack
+import json
 
 
 
@@ -10,4 +12,8 @@ def index(request):
 
 def recognize(request):
     accio = acr.recognize(request.body)
-    return HttpResponse(accio)
+    try:
+        createTrack(accio)
+        return HttpResponse(accio)
+    except KeyError:
+        return HttpResponse(accio)
