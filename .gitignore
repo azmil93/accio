@@ -1,6 +1,6 @@
 *.wav
 config_dict.py
 .DS_Store
-__pycache__
+__pycache__/
 db.sqlite3
 bower_components
