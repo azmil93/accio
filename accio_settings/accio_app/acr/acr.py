@@ -1,9 +1,9 @@
 import os, sys
-from accio.acr.acrcloud.recognizer import ACRCloudRecognizer
+from accio_app.acr.acrcloud.recognizer import ACRCloudRecognizer
 import pyaudio
 import wave
 import uuid
-from config_dict import config
+from .config_dict import config
 
 def recognize(data):
     CHUNK = 1024

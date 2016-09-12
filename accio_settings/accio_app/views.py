@@ -6,7 +6,7 @@ from accio_app.acr import acr
 
 
 def index(request):
-    return render(request, 'accio/index.html')
+    return render(request, 'accio_app/index.html')
 
 def recognize(request):
     accio = acr.recognize(request.body)
