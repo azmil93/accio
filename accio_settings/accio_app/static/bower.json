@@ -1,0 +1,17 @@
+{
+  "name": "python3",
+  "homepage": "hannahhall.github.io",
+  "authors": [
+    "Hannah Hall <hannahkhall13@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
