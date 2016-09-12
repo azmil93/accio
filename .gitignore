@@ -1,0 +1,4 @@
+*.wav
+config_dict.py
+.DS_Store
+__pycache__
