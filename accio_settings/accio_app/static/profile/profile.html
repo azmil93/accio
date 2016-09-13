@@ -1,0 +1,12 @@
+<h1>[[profile.title]]</h1>
+<button type="button" name="button" ng-click="profile.record()">record</button>
+<button type="button" name="button" ng-click="profile.logout()">Logout</button>
+<div class="noTracks" ng-show="profile.noTracks">
+  [[profile.response]]
+</div>
+<div class="trackCard" ng-repeat="track in profile.tracks">
+  <h3>[[track.fields.title]]</h3>
+  <h3>[[track.fields.artist]]</h3>
+  <h3>[[track.fields.album]]</h3>
+  <img ng-src="[[track.fields.imageURL]]" alt="" />
+</div>
