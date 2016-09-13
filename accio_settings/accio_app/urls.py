@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^recognize/', views.recognize, name='recognize'),
     url(r'^login/', views.loginUser, name="login"),
     url(r'^register/', views.newUser, name="register"),
-
+    url(r'^getTracks/', views.getUserTracks, name="getUserTracks"),
+    url(r'^logout/', views.logoutUser, name="logout"),
 ]

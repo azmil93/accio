@@ -29,6 +29,19 @@ angular.module('Accio_app')
       }).then((res) => {
           return res.data;
         })
+    },
+    logoutUser: () => {
+      return $http.get(`${rootUrl}/logout`)
+        .then((res) => {
+          return res.data;
+        })
+    },
+    getUserTracks: () => {
+      return $http.get(`${rootUrl}/getTracks/`)
+        .then((res) => {
+          return res.data;
+        })
     }
+
   }
 })
