@@ -38,8 +38,11 @@ def loginUser(request):
         username = data['username'],
         password = data['password']
     )
-
+    loggedIn = True
     if authenticateUser != None:
         login(request = request, user = authenticateUser)
+    else:
+        loggedIn = False
 
-    
+    response = json.dumps({"loggedIn": loggedIn})
+    return HttpResponse(response, content_type='application/json')
