@@ -22,6 +22,6 @@ def recognize(data):
     re = ACRCloudRecognizer(config)
     song = re.recognize_by_file(FILENAME, 0)
 
-    #delete file
+    os.remove(FILENAME)
     print(song)
     return song
