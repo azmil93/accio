@@ -1,47 +1,28 @@
+{% csrf_token %}
 {% load static %}
 <!DOCTYPE html>
  <html>
  	<head>
  		<meta charset="utf-8">
  		<meta http-equiv="X-UA-Compatible" content="IE=edge">
- 		<title></title>
+ 		<title>Accio</title>
  		<link rel="stylesheet" type="text/css" href=" ">
  	</head>
   <body>
     <div ng-app="Accio_app">
-      <ng-audio-recorder id="mainAudio"
-        audio-model="recorded"
-        show-player="false"
-        time-limit="5"
-        on-record-complete=""
-        ng-model="wavefile"
-        >
-        <div ng-controller='RecordCtrl'>
-          <div ng-if="recorder.isAvailable">
-            <div ng-if="recorder.status.isDenied === true" style="color: red;">
-              You need to grant permission for this application to USE your microphone.
-            </div>
-            <button
-              ng-click="recorder.startRecord()"
-              type="button"
-              ng-disabled="recorder.status.isDenied === true || recorder.status.isRecording">
-              Start Record
-            </button>
-          </div>
-          <div ng-if="!recorder.isAvailable">
-            Your browser does not support this feature natively, please use latest version of
-            <a href="https://www.google.com/chrome/browser" target="_blank">Google Chrome</a>
-            or
-            <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Mozilla Firefox</a>
-            . If you're on Safari or Internet Explorer, you can install
-            <a href="https://get.adobe.com/flashplayer/">Adobe Flash</a>
-            to use this feature.
-          </div>
-        </div>
-      </ng-audio-recorder>
+      <div ng-view>
+
+      </div>
     </div>
     <script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
     <script src="{% static 'bower_components/angular-recorder/dist/angular-audio-recorder.js' %}"></script>
+    <script src="{% static 'bower_components/angular-route/angular-route.min.js' %}"></script>
     <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'routing.js' %}"></script>
+    <script src="{% static 'factory.js' %}"></script>
+    <script src="{% static 'login/loginCtrl.js' %}"></script>
+    <script src="{% static 'profile/profileCtrl.js' %}"></script>
+    <script src="{% static 'record/recordCtrl.js' %}"></script>
+
   </body>
  </html>
