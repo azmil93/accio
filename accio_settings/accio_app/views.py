@@ -32,9 +32,14 @@ def newUser(request):
 
     return login(request)
 
-def login(request):
+def loginUser(request):
     data = json.loads(request.body.decode())
     authenticateUser = authenticate(
         username = data['username'],
         password = data['password']
     )
+
+    if authenticateUser != None:
+        login(request = request, user = authenticateUser)
+
+    
