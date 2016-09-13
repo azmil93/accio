@@ -1,8 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, get_object_or_404, render
 from django.core import serializers
 from accio_app.acr import acr
 from .utilities import createTrack
+from .models import Track
 import json
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, login, authenticate
@@ -13,7 +14,7 @@ def index(request):
 def recognize(request):
     accio = acr.recognize(request.body)
     try:
-        createTrack(accio)
+        createTrack(accio, request.user)
         return HttpResponse(accio)
     except KeyError:
         return HttpResponse(accio)
@@ -46,3 +47,19 @@ def loginUser(request):
         loggedIn = False
         response = json.dumps({"loggedIn": loggedIn})
         return HttpResponse(response, content_type='application/json')
+
+def logoutUser(request):
+    logout(request)
+    response = json.dumps({'logout': True})
+    return HttpResponse(response, content_type='application/json')
+
+def getUserTracks(request):
+    try:
+        tracks = get_list_or_404(Track, user=request.user.pk)
+        tracksJson = serializers.serialize("json", tracks)
+        return HttpResponse(tracksJson, content_type="application/json")
+    except:
+        response = json.dumps({
+            "error": "No tracks saved. Once you Accio a track it will save to your profile for later."
+        })
+        return HttpResponse(response, content_type="application/json")
