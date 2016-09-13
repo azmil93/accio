@@ -6,7 +6,7 @@ angular.module('Accio_app')
       controller: 'LoginCtrl',
       controllerAs: 'login'
     })
-    .when('/profile/:id', {
+    .when('/profile', {
       templateUrl: 'static/profile/profile.html',
       controller: 'ProfileCtrl',
       controllerAs: 'profile'
