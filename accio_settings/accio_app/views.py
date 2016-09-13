@@ -7,8 +7,6 @@ import json
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, login, authenticate
 
-
-
 def index(request):
     return render(request, 'accio_app/index.html')
 
@@ -22,27 +20,29 @@ def recognize(request):
 
 def newUser(request):
     data = json.loads(request.body.decode())
-    newUser = User.objects.create(
+    user = User.objects.create_user(
         username = data['username'],
         password = data['password'],
         email = data['email'],
         first_name = data['first_name'],
         last_name = data['last_name']
     )
-
-    return login(request)
+    return loginUser(request)
 
 def loginUser(request):
     data = json.loads(request.body.decode())
-    authenticateUser = authenticate(
-        username = data['username'],
-        password = data['password']
+    username = data['username']
+    password = data['password']
+    user = authenticate(
+        username = username,
+        password = password
     )
     loggedIn = True
-    if authenticateUser != None:
-        login(request = request, user = authenticateUser)
+    if user is not None:
+        login(request = request, user = user)
+        userJson = serializers.serialize("json", [user, ])
+        return HttpResponse(userJson, content_type='application/json')
     else:
         loggedIn = False
-
-    response = json.dumps({"loggedIn": loggedIn})
-    return HttpResponse(response, content_type='application/json')
+        response = json.dumps({"loggedIn": loggedIn})
+        return HttpResponse(response, content_type='application/json')
