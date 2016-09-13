@@ -4,7 +4,7 @@ import requests
 from .models import Track
 import json
 
-def createTrack(data):
+def createTrack(data, user):
     jsonData = json.loads(data)
     music = jsonData['metadata']['music'][0]
     isrc = music['external_ids']['isrc']
@@ -15,20 +15,20 @@ def createTrack(data):
         'https://api.spotify.com/v1/search?type=track&q=isrc:' + str(isrc)
     )
     spotifyJson = spotify.json()
-    print(spotifyJson)
     try:
         imageUrl = spotifyJson['tracks']['items'][0]['album']['images'][1]['url']
-
         newTrack = Track.objects.create(
             title=title,
             album=album,
             artist=artist,
-            imageURL=imageUrl
+            imageURL=imageUrl,
+            user=user
         )
     except IndexError:
         newTrack = Track.objects.create(
             title=title,
             album=album,
-            artist=artist
+            artist=artist,
+            user=user
         )
-    print(newTrack)
+    return newTrack
