@@ -63,3 +63,8 @@ def getUserTracks(request):
             "error": "No tracks saved. Once you Accio a track it will save to your profile for later."
         })
         return HttpResponse(response, content_type="application/json")
+
+def deleteTrack(request, event_id):
+    track = Track.objects.filter(pk=event_id)
+    track.delete()
+    return HttpResponse("success")
