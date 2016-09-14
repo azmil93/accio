@@ -14,8 +14,8 @@ def index(request):
 def recognize(request):
     accio = acr.recognize(request.body)
     try:
-        createTrack(accio, request.user)
-        return HttpResponse(accio)
+        track = createTrack(accio, request.user) #just changed this try it later
+        return HttpResponse(track)
     except KeyError:
         return HttpResponse(accio)
 
