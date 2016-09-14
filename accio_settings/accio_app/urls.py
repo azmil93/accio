@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^register/', views.newUser, name="register"),
     url(r'^getTracks/', views.getUserTracks, name="getUserTracks"),
     url(r'^logout/', views.logoutUser, name="logout"),
+    url(r'^userAuth/', views.userAuth, name="userAuth"),
     url(r'^(?P<event_id>[0-9]+)/$', views.deleteTrack, name="delete"),
 ]

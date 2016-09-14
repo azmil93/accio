@@ -5,7 +5,7 @@ from accio_app.acr import acr
 from .utilities import createTrack
 from .models import Track
 import json
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 from django.contrib.auth import logout, login, authenticate
 
 def index(request):
@@ -51,6 +51,13 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     response = json.dumps({'logout': True})
+    return HttpResponse(response, content_type='application/json')
+
+def userAuth(request):
+    if request.user.is_anonymous:
+        response = json.dumps({"user": False})
+    else:
+        response = json.dumps({"user": True})
     return HttpResponse(response, content_type='application/json')
 
 def getUserTracks(request):
