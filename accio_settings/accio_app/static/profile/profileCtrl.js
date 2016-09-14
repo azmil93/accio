@@ -1,8 +1,7 @@
 angular.module('Accio_app')
-.controller('ProfileCtrl', function(DataFactory, $location, $cookies) {
+.controller('ProfileCtrl', function(DataFactory, $location) {
   const profile = this;
   profile.title = 'welcome';
-  console.log($cookies.getAll())
   profile.getTracks = () => {
     DataFactory.getUserTracks().then((res) => {
       if (res.length > 1) {

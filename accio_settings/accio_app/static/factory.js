@@ -1,4 +1,15 @@
 angular.module('Accio_app')
+.factory('UserFactory', ($http) => {
+  const rootUrl = 'http://localhost:8000';
+  return {
+    userAuth: () => {
+      return $http.get(`${rootUrl}/userAuth/`)
+      .then((res) => {
+          return res.data;
+        })
+    }
+  }
+})
 .factory('DataFactory', ($http) => {
   const rootUrl = 'http://localhost:8000';
   return {
