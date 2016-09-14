@@ -15,7 +15,8 @@ def recognize(request):
     accio = acr.recognize(request.body)
     try:
         track = createTrack(accio, request.user)
-        return HttpResponse(track)
+        trackJson = serializers.serialize("json", [track, ])
+        return HttpResponse(trackJson, content_type='application/json')
     except KeyError:
         return HttpResponse(accio)
 

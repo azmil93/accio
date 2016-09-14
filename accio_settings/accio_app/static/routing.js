@@ -8,9 +8,6 @@ var requiresAuth = ($location, UserFactory) => new Promise((resolve, reject) => 
     }
   });
 })
-
-
-
 angular.module('Accio_app')
 .config(function($routeProvider) {
   $routeProvider
