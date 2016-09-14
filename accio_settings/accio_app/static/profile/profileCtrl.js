@@ -1,15 +1,19 @@
 angular.module('Accio_app')
-.controller('ProfileCtrl', function(DataFactory, $location) {
+.controller('ProfileCtrl', function(DataFactory, $location, $cookies) {
   const profile = this;
   profile.title = 'welcome';
-  DataFactory.getUserTracks().then((res) => {
-    if (res.length > 1) {
-      profile.tracks = res
-    } else {
-      profile.noTracks = true;
-      profile.response = res.error;
-    }
-  })
+  console.log($cookies.getAll())
+  profile.getTracks = () => {
+    DataFactory.getUserTracks().then((res) => {
+      if (res.length > 1) {
+        profile.tracks = res
+      } else {
+        profile.noTracks = true;
+        profile.response = res.error;
+      }
+    })
+  };
+  profile.getTracks();
   profile.record = () => {
     $location.path('/record')
   }
@@ -20,5 +24,9 @@ angular.module('Accio_app')
         $location.path('/')
       }
     })
+  },
+  profile.delete = (track) => {
+    DataFactory.deleteTrack(track.pk)
+    .then(profile.getTracks())
   }
 })

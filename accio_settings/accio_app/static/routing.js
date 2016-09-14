@@ -9,7 +9,8 @@ angular.module('Accio_app')
     .when('/profile', {
       templateUrl: 'static/profile/profile.html',
       controller: 'ProfileCtrl',
-      controllerAs: 'profile'
+      controllerAs: 'profile',
+      // resolve: {requiresAuth}
     })
     .when('/record', {
       templateUrl: 'static/record/record.html',

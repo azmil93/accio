@@ -41,6 +41,12 @@ angular.module('Accio_app')
         .then((res) => {
           return res.data;
         })
+    },
+    deleteTrack: (id) => {
+      return $http.delete(`${rootUrl}/${id}/`)
+        .then((res) => {
+          return res.data;
+        })
     }
 
   }
