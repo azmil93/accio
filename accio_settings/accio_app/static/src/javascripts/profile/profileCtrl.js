@@ -1,5 +1,5 @@
 angular.module('Accio_app')
-.controller('ProfileCtrl', function(DataFactory, $location, UserFactory) {
+.controller('ProfileCtrl', ['DataFactory', '$location', 'UserFactory', function(DataFactory, $location, UserFactory) {
   const profile = this;
   UserFactory.userAuth()
     .then(res => profile.username = res.username)
@@ -30,4 +30,4 @@ angular.module('Accio_app')
     DataFactory.deleteTrack(track.pk)
     .then(profile.getTracks())
   }
-})
+}])

@@ -1,5 +1,5 @@
 angular.module('Accio_app')
-.controller('LoginCtrl', function(DataFactory, $location) {
+.controller('LoginCtrl', ['DataFactory', '$location', function(DataFactory, $location) {
   const login = this;
   login.hello = "Accio";
 
@@ -26,4 +26,4 @@ angular.module('Accio_app')
       }
     })
   };
-});
+}]);

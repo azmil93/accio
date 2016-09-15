@@ -1,5 +1,6 @@
 angular.module('Accio_app')
-.controller('RecordCtrl', function($interval, $http, DataFactory, $location) {
+.controller('RecordCtrl', ['$interval', '$http', 'DataFactory', '$location',
+function($interval, $http, DataFactory, $location) {
   const record = this;
 
   record.int = $interval(function () {
@@ -36,4 +37,4 @@ angular.module('Accio_app')
       DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'))
     });
   };
-})
+}])
