@@ -24,5 +24,7 @@ angular.module('Accio_app')
     })
     .when('/record', {
       templateUrl: 'static/record/record.html',
+      controller: 'RecordCtrl',
+      controllerAs: 'record',
     });
 });
