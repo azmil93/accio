@@ -14,7 +14,6 @@ angular.module('Accio_app')
   const rootUrl = 'http://localhost:8000';
   return {
     registerUser: (userData) => {
-      console.log(userData)
       return $http({
     		url: `${rootUrl}/register/`,
 	    	method: "POST",
@@ -74,6 +73,5 @@ angular.module('Accio_app')
         return res.data;
       })
     }
-
   }
 })

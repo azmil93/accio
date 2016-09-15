@@ -14,10 +14,9 @@ angular.module('Accio_app')
             }
           }
           catch(err) {
-            record.results = res[0].fields;
-            console.log(record.results);
+            record.results = res[0];
             record.showInfo = true;
-            if (record.user === 0) {
+            if (record.results.fields.user === 0) {
               record.anonUser = true;
             }
           }
@@ -34,7 +33,7 @@ angular.module('Accio_app')
   record.register = () => {
     DataFactory.registerUser(record.createUser)
     .then((res) => {
-      DataFactory.updateUser(46).then(res => $location.path('/profile'))
+      DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'))
     });
   };
 })

@@ -6,7 +6,7 @@ angular.module('Accio_app')
   profile.title = 'welcome';
   profile.getTracks = () => {
     DataFactory.getUserTracks().then((res) => {
-      if (res.length > 1) {
+      if (res.length >= 1) {
         profile.tracks = res
       } else {
         profile.noTracks = true;

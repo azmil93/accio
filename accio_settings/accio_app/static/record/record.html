@@ -3,14 +3,14 @@
     No Match could be found. Try turning up the volume to find a match
   </p>
   <p ng-show="record.showInfo">
-    Title: [[record.results.title]]
-    Album: [[record.results.album]]
-    Artist: [[record.results.artist]]
-    <img src="[[record.results.imageURL]]" alt="" />
+    Title: [[record.results.fields.title]]
+    Album: [[record.results.fields.album]]
+    Artist: [[record.results.fields.artist]]
+    <img src="[[record.results.fields.imageURL]]" alt="" />
   </p>
 </div>
 
-<div class="">
+<div class="" ng-show="record.anonUser">
   <p>Create a user to save songs</p>
   <form class="" action="index.html" method="post">
     <input type="text" ng-model="record.createUser.first_name" placeholder="First Name">
