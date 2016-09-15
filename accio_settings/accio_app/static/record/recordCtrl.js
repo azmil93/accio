@@ -1,5 +1,5 @@
 angular.module('Accio_app')
-.controller('RecordCtrl', function($interval, $http, DataFactory) {
+.controller('RecordCtrl', function($interval, $http, DataFactory, $location) {
   const record = this;
 
   record.int = $interval(function () {
@@ -15,7 +15,11 @@ angular.module('Accio_app')
           }
           catch(err) {
             record.results = res[0].fields;
+            console.log(record.results);
             record.showInfo = true;
+            if (record.user === 0) {
+              record.anonUser = true;
+            }
           }
         });
       record.showResults = true;
@@ -25,5 +29,12 @@ angular.module('Accio_app')
 
   record.stopInterval = function () {
     $interval.cancel(record.int);
+  };
+
+  record.register = () => {
+    DataFactory.registerUser(record.createUser)
+    .then((res) => {
+      DataFactory.updateUser(46).then(res => $location.path('/profile'))
+    });
   };
 })

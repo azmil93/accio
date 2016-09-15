@@ -67,6 +67,12 @@ angular.module('Accio_app')
         .then(function (res) {
           return res.data;
         });
+    },
+    updateUser: (id) => {
+      return $http.patch(`${rootUrl}/update/`, {trackId: id})
+      .then((res) => {
+        return res.data;
+      })
     }
 
   }
