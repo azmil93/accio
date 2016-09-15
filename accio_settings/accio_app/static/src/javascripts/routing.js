@@ -7,7 +7,7 @@ var requiresAuth = ['$location', 'UserFactory', ($location, UserFactory) => new 
       $location.path('/');
     }
   });
-})]
+})];
 angular.module('Accio_app')
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider

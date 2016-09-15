@@ -11,7 +11,7 @@ function($interval, $http, DataFactory, $location) {
         .then((res) => {
           try {
             if(res.status.code === 1001) {
-              record.noResults = true
+              record.noResults = true;
             }
           }
           catch(err) {
@@ -34,7 +34,7 @@ function($interval, $http, DataFactory, $location) {
   record.register = () => {
     DataFactory.registerUser(record.createUser)
     .then((res) => {
-      DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'))
+      DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'));
     });
   };
-}])
+}]);

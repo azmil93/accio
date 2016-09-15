@@ -1,13 +1,10 @@
-'use strict';
 angular.module('Accio_app', ['angularAudioRecorder', 'ngRoute'])
   .config(['$interpolateProvider', '$httpProvider', 'recorderServiceProvider',
   function($interpolateProvider, $httpProvider, recorderServiceProvider){
-
+    'use strict';
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
-
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-
     recorderServiceProvider
       .forceSwf(false)
       .withMp3Conversion(false);
@@ -21,9 +18,9 @@ angular.module('Accio_app')
       return $http.get(`${rootUrl}/userAuth/`)
       .then((res) => {
           return res.data;
-        })
+        });
     }
-  }
+  };
 }])
 .factory('DataFactory', ['$http', ($http) => {
   const rootUrl = 'http://localhost:8000';
@@ -41,7 +38,7 @@ angular.module('Accio_app')
 	    	}
     	}).then((res) => {
           return res.data;
-        })
+        });
     },
     loginUser: (userData) => {
       return $http({
@@ -53,25 +50,25 @@ angular.module('Accio_app')
         }
       }).then((res) => {
           return res.data;
-        })
+        });
     },
     logoutUser: () => {
       return $http.get(`${rootUrl}/logout`)
         .then((res) => {
           return res.data;
-        })
+        });
     },
     getUserTracks: () => {
       return $http.get(`${rootUrl}/getTracks/`)
         .then((res) => {
           return res.data;
-        })
+        });
     },
     deleteTrack: (id) => {
       return $http.delete(`${rootUrl}/${id}/`)
         .then((res) => {
           return res.data;
-        })
+        });
     },
     recognize: (blob) => {
       return $http({
@@ -86,10 +83,10 @@ angular.module('Accio_app')
       return $http.patch(`${rootUrl}/update/`, {trackId: id})
       .then((res) => {
         return res.data;
-      })
+      });
     }
-  }
-}])
+  };
+}]);
 
 var requiresAuth = ['$location', 'UserFactory', ($location, UserFactory) => new Promise((resolve, reject) => {
   UserFactory.userAuth().then((res) => {
@@ -100,7 +97,7 @@ var requiresAuth = ['$location', 'UserFactory', ($location, UserFactory) => new 
       $location.path('/');
     }
   });
-})]
+})];
 angular.module('Accio_app')
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -131,24 +128,24 @@ angular.module('Accio_app')
     DataFactory.loginUser(login.user)
     .then((res) => {
       if (res[0]) {
-        $location.path(`/profile`)
+        $location.path(`/profile`);
       }
       else {
         alert('Login Failed');
       }
-    })
+    });
   };
 
   login.register = () => {
     DataFactory.registerUser(login.createUser)
     .then((res) => {
       if (res[0]) {
-        $location.path(`/profile`)
+        $location.path(`/profile`);
       }
       else {
         alert('Login Failed');
       }
-    })
+    });
   };
 }]);
 
@@ -156,35 +153,38 @@ angular.module('Accio_app')
 .controller('ProfileCtrl', ['DataFactory', '$location', 'UserFactory', function(DataFactory, $location, UserFactory) {
   const profile = this;
   UserFactory.userAuth()
-    .then(res => profile.username = res.username)
+    .then(res => profile.username = res.username);
   profile.title = 'welcome';
   profile.getTracks = () => {
     DataFactory.getUserTracks().then((res) => {
       if (res.length >= 1) {
-        profile.tracks = res
+        profile.tracks = res;
       } else {
         profile.noTracks = true;
         profile.response = res.error;
       }
-    })
+    });
   };
   profile.getTracks();
+
   profile.record = () => {
-    $location.path('/record')
-  }
+    $location.path('/record');
+  };
+
   profile.logout = () => {
     DataFactory.logoutUser()
     .then((res) => {
       if (res.logout === true) {
-        $location.path('/')
+        $location.path('/');
       }
-    })
-  },
+    });
+  };
+  
   profile.delete = (track) => {
     DataFactory.deleteTrack(track.pk)
-    .then(profile.getTracks())
-  }
-}])
+    .then(profile.getTracks());
+  };
+}]);
 
 angular.module('Accio_app')
 .controller('RecordCtrl', ['$interval', '$http', 'DataFactory', '$location',
@@ -199,7 +199,7 @@ function($interval, $http, DataFactory, $location) {
         .then((res) => {
           try {
             if(res.status.code === 1001) {
-              record.noResults = true
+              record.noResults = true;
             }
           }
           catch(err) {
@@ -222,7 +222,7 @@ function($interval, $http, DataFactory, $location) {
   record.register = () => {
     DataFactory.registerUser(record.createUser)
     .then((res) => {
-      DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'))
+      DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'));
     });
   };
-}])
+}]);

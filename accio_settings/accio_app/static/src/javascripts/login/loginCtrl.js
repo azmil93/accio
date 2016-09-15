@@ -7,23 +7,23 @@ angular.module('Accio_app')
     DataFactory.loginUser(login.user)
     .then((res) => {
       if (res[0]) {
-        $location.path(`/profile`)
+        $location.path(`/profile`);
       }
       else {
         alert('Login Failed');
       }
-    })
+    });
   };
 
   login.register = () => {
     DataFactory.registerUser(login.createUser)
     .then((res) => {
       if (res[0]) {
-        $location.path(`/profile`)
+        $location.path(`/profile`);
       }
       else {
         alert('Login Failed');
       }
-    })
+    });
   };
 }]);
