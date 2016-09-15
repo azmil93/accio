@@ -29,6 +29,7 @@ def createTrack(data, user):
             title=title,
             album=album,
             artist=artist,
-            user=user
+            user=user,
+            imageURL="static/no_image_placeholder.png"
         )
     return newTrack

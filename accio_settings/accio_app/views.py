@@ -58,7 +58,7 @@ def userAuth(request):
     if request.user.is_anonymous:
         response = json.dumps({"user": False})
     else:
-        response = json.dumps({"user": True})
+        response = json.dumps({"user": True, "username":request.user.username})
     return HttpResponse(response, content_type='application/json')
 
 def getUserTracks(request):
