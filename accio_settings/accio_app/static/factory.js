@@ -58,6 +58,15 @@ angular.module('Accio_app')
         .then((res) => {
           return res.data;
         })
+    },
+    recognize: (blob) => {
+      return $http({
+        method: "POST",
+        url: 'http://localhost:8000/recognize/',
+        data: blob})
+        .then(function (res) {
+          return res.data;
+        });
     }
 
   }

@@ -1,20 +1,16 @@
 angular.module('Accio_app')
-.controller('RecordParent', function() {
-  const parent = this;
-})
-.controller('RecordCtrl', function ($scope, $timeout, $http, recorderService, $interval) {
+.controller('RecordCtrl', function($interval, $http, DataFactory) {
   const record = this;
-
   record.int = $interval(function () {
-    if ($scope.$parent.recorder.status.songTrue === true) {
-      console.log($scope.$parent.recorder.status.songTrue);
-      console.log($scope.$parent.recorder.songInfo);
+    if(record.recorded) {
+      console.log(record.recorded);
+      var file = new FormData();
+      file.append('audio/wav', record.recorded, 'output.wav');
+      DataFactory.recognize(file).then(res => console.log(res));
       record.stopInterval()
     }
   }, 1000)
-
-
   record.stopInterval = function () {
     $interval.cancel(record.int);
   };
-});
+})
