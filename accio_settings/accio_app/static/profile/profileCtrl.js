@@ -1,6 +1,8 @@
 angular.module('Accio_app')
-.controller('ProfileCtrl', function(DataFactory, $location) {
+.controller('ProfileCtrl', function(DataFactory, $location, UserFactory) {
   const profile = this;
+  UserFactory.userAuth()
+    .then(res => profile.username = res.username)
   profile.title = 'welcome';
   profile.getTracks = () => {
     DataFactory.getUserTracks().then((res) => {
