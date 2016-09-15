@@ -1,9 +1,21 @@
+<div class="" ng-show="record.showResults">
+  <p ng-show="record.noResults">
+    No Match could be found. Try turning up the volume to find a match
+  </p>
+  <p ng-show="record.showInfo">
+    Title: [[record.results.title]]
+    Album: [[record.results.album]]
+    Artist: [[record.results.artist]]
+    <img src="[[record.results.imageURL]]" alt="" />
+  </p>
+</div>
+
 <div id="mainAudio"
   ng-audio-recorder="recorder"
   audio-model="record.recorded"
   show-player="false"
   time-limit="5"
-  on-record-complete="record.thing()"
+  on-record-complete=""
   >
   <div ng-if="recorder.isAvailable">
     <div ng-if="recorder.status.isDenied === true" style="color: red;">
