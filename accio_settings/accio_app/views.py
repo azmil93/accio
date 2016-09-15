@@ -76,3 +76,10 @@ def deleteTrack(request, event_id):
     track = Track.objects.filter(pk=event_id)
     track.delete()
     return HttpResponse("success")
+
+def updateUser(request):
+    data = json.loads(request.body.decode())
+    track = Track.objects.get(pk=data['trackId'])
+    track.user = request.user
+    track.save()
+    return HttpResponse(True)

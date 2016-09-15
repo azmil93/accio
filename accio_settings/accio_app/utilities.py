@@ -15,8 +15,13 @@ def createTrack(data, user):
         'https://api.spotify.com/v1/search?type=track&q=isrc:' + str(isrc)
     )
     spotifyJson = spotify.json()
+
     try:
         imageUrl = spotifyJson['tracks']['items'][0]['album']['images'][1]['url']
+    except IndexError:
+        imageUrl = "static/no_image_placeholder.png"
+        
+    try:
         newTrack = Track.objects.create(
             title=title,
             album=album,
@@ -24,12 +29,12 @@ def createTrack(data, user):
             imageURL=imageUrl,
             user=user
         )
-    except IndexError:
+    except ValueError:
         newTrack = Track.objects.create(
             title=title,
             album=album,
             artist=artist,
-            user=user,
-            imageURL="static/no_image_placeholder.png"
+            imageURL=imageUrl
         )
+
     return newTrack
