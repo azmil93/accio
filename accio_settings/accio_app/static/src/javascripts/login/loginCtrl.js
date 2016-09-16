@@ -1,5 +1,5 @@
 angular.module('Accio_app')
-.controller('LoginCtrl', function(DataFactory, $location) {
+.controller('LoginCtrl', ['DataFactory', '$location', function(DataFactory, $location) {
   const login = this;
   login.hello = "Accio";
 
@@ -7,23 +7,23 @@ angular.module('Accio_app')
     DataFactory.loginUser(login.user)
     .then((res) => {
       if (res[0]) {
-        $location.path(`/profile`)
+        $location.path(`/profile`);
       }
       else {
         alert('Login Failed');
       }
-    })
+    });
   };
 
   login.register = () => {
     DataFactory.registerUser(login.createUser)
     .then((res) => {
       if (res[0]) {
-        $location.path(`/profile`)
+        $location.path(`/profile`);
       }
       else {
         alert('Login Failed');
       }
-    })
+    });
   };
-});
+}]);

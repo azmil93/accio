@@ -1,5 +1,6 @@
 angular.module('Accio_app')
-.controller('RecordCtrl', function($interval, $http, DataFactory, $location) {
+.controller('RecordCtrl', ['$interval', '$http', 'DataFactory', '$location',
+function($interval, $http, DataFactory, $location) {
   const record = this;
 
   record.int = $interval(function () {
@@ -10,7 +11,7 @@ angular.module('Accio_app')
         .then((res) => {
           try {
             if(res.status.code === 1001) {
-              record.noResults = true
+              record.noResults = true;
             }
           }
           catch(err) {
@@ -33,7 +34,7 @@ angular.module('Accio_app')
   record.register = () => {
     DataFactory.registerUser(record.createUser)
     .then((res) => {
-      DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'))
+      DataFactory.updateUser(record.results.pk).then(res => $location.path('/profile'));
     });
   };
-})
+}]);

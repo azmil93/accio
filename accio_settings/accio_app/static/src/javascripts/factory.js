@@ -1,16 +1,16 @@
 angular.module('Accio_app')
-.factory('UserFactory', ($http) => {
+.factory('UserFactory', ['$http', ($http) => {
   const rootUrl = 'http://localhost:8000';
   return {
     userAuth: () => {
       return $http.get(`${rootUrl}/userAuth/`)
       .then((res) => {
           return res.data;
-        })
+        });
     }
-  }
-})
-.factory('DataFactory', ($http) => {
+  };
+}])
+.factory('DataFactory', ['$http', ($http) => {
   const rootUrl = 'http://localhost:8000';
   return {
     registerUser: (userData) => {
@@ -26,7 +26,7 @@ angular.module('Accio_app')
 	    	}
     	}).then((res) => {
           return res.data;
-        })
+        });
     },
     loginUser: (userData) => {
       return $http({
@@ -38,25 +38,25 @@ angular.module('Accio_app')
         }
       }).then((res) => {
           return res.data;
-        })
+        });
     },
     logoutUser: () => {
       return $http.get(`${rootUrl}/logout`)
         .then((res) => {
           return res.data;
-        })
+        });
     },
     getUserTracks: () => {
       return $http.get(`${rootUrl}/getTracks/`)
         .then((res) => {
           return res.data;
-        })
+        });
     },
     deleteTrack: (id) => {
       return $http.delete(`${rootUrl}/${id}/`)
         .then((res) => {
           return res.data;
-        })
+        });
     },
     recognize: (blob) => {
       return $http({
@@ -71,7 +71,7 @@ angular.module('Accio_app')
       return $http.patch(`${rootUrl}/update/`, {trackId: id})
       .then((res) => {
         return res.data;
-      })
+      });
     }
-  }
-})
+  };
+}]);
