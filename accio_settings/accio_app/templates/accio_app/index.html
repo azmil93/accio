@@ -10,14 +10,15 @@
  	</head>
   <body>
     <div ng-app="Accio_app">
-      <div ng-view>
-
+      <div class="navbar" ng-controller="LoginCtrl as login">
+        <ng-include src="'static/src/javascripts/login/login.html'"></ng-include>
       </div>
+      <div ng-view></div>
     </div>
     <script src="{% static 'bower_components/angular/angular.min.js' %}"></script>
     <script src="{% static 'bower_components/angular-recorder/dist/angular-audio-recorder.min.js' %}"></script>
     <script src="{% static 'bower_components/angular-route/angular-route.min.js' %}"></script>
-    <script src="{% static 'dist/app.min.js' %}"></script>
+    <script src="{% static 'dist/app.js' %}"></script>
 
   </body>
  </html>

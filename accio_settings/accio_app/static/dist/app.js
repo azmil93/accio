@@ -94,20 +94,52 @@ var requiresAuth = ['$location', 'UserFactory', function ($location, UserFactory
   });
 }];
 angular.module('Accio_app').config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.when('/', {
-    templateUrl: 'static/src/javascripts/login/login.html',
-    controller: 'LoginCtrl',
-    controllerAs: 'login'
-  }).when('/profile', {
+  $routeProvider.when('/profile', {
     templateUrl: 'static/src/javascripts/profile/profile.html',
     controller: 'ProfileCtrl',
     controllerAs: 'profile',
     resolve: { requiresAuth: requiresAuth }
-  }).when('/record', {
+  }).when('/', {
     templateUrl: 'static/src/javascripts/record/record.html',
     controller: 'RecordCtrl',
     controllerAs: 'record'
   });
+}]);
+'use strict';
+
+angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location', 'UserFactory', '$window', function (DataFactory, $location, UserFactory, $window) {
+  var login = this;
+  login.hello = "Accio";
+  UserFactory.userAuth().then(function (res) {
+    return login.user = res;
+  });
+  login.loginUser = function () {
+    DataFactory.loginUser(login.user).then(function (res) {
+      if (res[0]) {
+        $window.location.reload();
+      } else {
+        alert('Login Failed');
+      }
+    });
+  };
+
+  login.register = function () {
+    DataFactory.registerUser(login.createUser).then(function (res) {
+      if (res[0]) {
+        $window.location.reload();
+      } else {
+        alert('Login Failed');
+      }
+    });
+  };
+
+  login.logout = function () {
+    DataFactory.logoutUser().then(function (res) {
+      if (res.logout === true) {
+        $window.location.reload();
+      }
+    });
+  };
 }]);
 'use strict';
 
@@ -130,45 +162,11 @@ angular.module('Accio_app').controller('ProfileCtrl', ['DataFactory', '$location
   profile.getTracks();
 
   profile.record = function () {
-    $location.path('/record');
-  };
-
-  profile.logout = function () {
-    DataFactory.logoutUser().then(function (res) {
-      if (res.logout === true) {
-        $location.path('/');
-      }
-    });
+    $location.path('/');
   };
 
   profile.delete = function (track) {
     DataFactory.deleteTrack(track.pk).then(profile.getTracks());
-  };
-}]);
-'use strict';
-
-angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location', function (DataFactory, $location) {
-  var login = this;
-  login.hello = "Accio";
-
-  login.loginUser = function () {
-    DataFactory.loginUser(login.user).then(function (res) {
-      if (res[0]) {
-        $location.path('/profile');
-      } else {
-        alert('Login Failed');
-      }
-    });
-  };
-
-  login.register = function () {
-    DataFactory.registerUser(login.createUser).then(function (res) {
-      if (res[0]) {
-        $location.path('/profile');
-      } else {
-        alert('Login Failed');
-      }
-    });
   };
 }]);
 'use strict';

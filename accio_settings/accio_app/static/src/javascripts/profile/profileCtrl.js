@@ -17,18 +17,9 @@ angular.module('Accio_app')
   profile.getTracks();
 
   profile.record = () => {
-    $location.path('/record');
+    $location.path('/');
   };
 
-  profile.logout = () => {
-    DataFactory.logoutUser()
-    .then((res) => {
-      if (res.logout === true) {
-        $location.path('/');
-      }
-    });
-  };
-  
   profile.delete = (track) => {
     DataFactory.deleteTrack(track.pk)
     .then(profile.getTracks());

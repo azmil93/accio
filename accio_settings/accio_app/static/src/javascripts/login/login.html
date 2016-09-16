@@ -1,31 +1,37 @@
-<div class="wrapper">
+<div class="navBarWrapper">
   <h2>[[login.hello]]</h2>
-<!-- login -->
-  <form class="" method="post">
-    <input type="text" ng-model="login.user.username" placeholder="Username">
-    <input type="password" ng-model="login.user.password" placeholder="Password">
-    <input type="button" name="name" value="Login" ng-click="login.loginUser()">
-  </form>
-  <p>
-    Don't have an account create one <span ng-click="registerShow = !registerShow">here</span>
-  </p>
+  <div class="noUserNav" ng-hide="login.user.user">
+    <p ng-click="loginShow = !loginShow">Login</p>
+    <p ng-click="registerShow = !registerShow">Register</p>
 
-<!-- register -->
-  <div class="registerWrap" ng-show="registerShow">
-    <form class="" action="index.html" method="post">
-      <input type="text" ng-model="login.createUser.first_name" placeholder="First Name">
-      <input type="text" ng-model="login.createUser.last_name" placeholder="Last Name">
-      <input type="text" ng-model="login.createUser.username" placeholder="Username">
-      <input type="email" ng-model="login.createUser.email" placeholder="Email">
-      <input type="password" ng-model="login.createUser.password" placeholder="Password">
-      <input type="button" name="name" value="Submit" ng-click="login.register()">
-    </form>
-    <button type="button" name="button" ng-click="registerShow = !registerShow">Cancel</button>
+  <!-- login -->
+    <div class="loginWrapper" ng-show="loginShow">
+      <form class="" method="post">
+        <input type="text" ng-model="login.user.username" placeholder="Username">
+        <input type="password" ng-model="login.user.password" placeholder="Password">
+        <input type="button" name="name" value="Login" ng-click="login.loginUser()">
+      </form>
+    </div>
+
+  <!-- register -->
+    <div class="registerWrap" ng-show="registerShow">
+      <form class="" action="index.html" method="post">
+        <input type="text" ng-model="login.createUser.first_name" placeholder="First Name">
+        <input type="text" ng-model="login.createUser.last_name" placeholder="Last Name">
+        <input type="text" ng-model="login.createUser.username" placeholder="Username">
+        <input type="email" ng-model="login.createUser.email" placeholder="Email">
+        <input type="password" ng-model="login.createUser.password" placeholder="Password">
+        <input type="button" name="name" value="Submit" ng-click="login.register()">
+      </form>
+      <button type="button" name="button" ng-click="registerShow = !registerShow">Cancel</button>
+    </div>
+  </div>
+  <div class="" ng-show="login.user.user">
+    <p>Welcome [[login.user.username]]</p>
+    <p ng-click="login.logout()">Logout</p>
+    <a href="#/profile">Profile</a>
   </div>
 
-  <div class="" ng-controller="RecordCtrl as record">
-    <ng-include src="'static/src/javascripts/record/record.html'"></ng-include>
-  </div>
 
 
 
