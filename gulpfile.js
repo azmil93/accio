@@ -1,21 +1,28 @@
-var gulp = require('gulp')
-var concat = require('gulp-concat')
-var uglify = require('gulp-uglify')
-var rename = require('gulp-rename')
-var sass = require('gulp-sass');
-var jshint = require('gulp-jshint');
+var gulp = require('gulp'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
+    sass = require('gulp-sass'),
+    jshint = require('gulp-jshint'),
+    gulp = require('gulp'),
+    babel = require('gulp-babel'),
+    appFile = './accio_settings/accio_app/static/src/javascripts/app.js',
+    jsPath = './accio_settings/accio_app/static/src/javascripts/**/*.js',
+    destPath = './accio_settings/accio_app/static/dist/',
+    sassSrc = './accio_settings/accio_app/static/src/sass/*.scss',
+    cssPath = './accio_settings/accio_app/static/dist/css';
 
-
-var appFile = './accio_settings/accio_app/static/src/javascripts/app.js';
-var jsPath = './accio_settings/accio_app/static/src/javascripts/**/*.js';
-var destPath = './accio_settings/accio_app/static/dist/';
-var sassSrc = './accio_settings/accio_app/static/src/sass/*.scss';
-var cssPath = './accio_settings/accio_app/static/dist/css';
 
 gulp.task('default', function() {
   return gulp.src([appFile, jsPath])
+    .pipe(babel({
+        presets: ['es2015']
+    }))
     .pipe(concat('app.js'))
     .pipe(gulp.dest(destPath))
+    .pipe(uglify())
+    .pipe(rename({ extname: '.min.js' }))
+    .pipe(gulp.dest(destPath));
 });
 
 gulp.task('sass', function () {
