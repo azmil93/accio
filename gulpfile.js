@@ -20,10 +20,14 @@ gulp.task('default', function() {
     }))
     .pipe(concat('app.js'))
     .pipe(gulp.dest(destPath))
+});
+
+gulp.task('mini', function() {
+  return gulp.src('./accio_settings/accio_app/static/dist/app.js')
     .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
     .pipe(gulp.dest(destPath));
-});
+})
 
 gulp.task('sass', function () {
   return gulp.src(sassSrc)
