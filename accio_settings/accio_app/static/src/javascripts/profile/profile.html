@@ -1,12 +1,23 @@
-<h1>[[profile.title]] [[profile.username]]</h1>
-<button type="button" name="button" ng-click="profile.record()">record</button>
-<div class="noTracks" ng-show="profile.noTracks">
-  [[profile.response]]
-</div>
-<div class="trackCard" ng-repeat="track in profile.tracks">
-  <h3>[[track.fields.title]]</h3>
-  <h3>[[track.fields.artist]]</h3>
-  <h3>[[track.fields.album]]</h3>
-  <img ng-src="[[track.fields.imageURL]]" alt="" />
-  <button type="button" name="button" ng-click="profile.delete(track)">Delete</button>
+<div class="profileWrapper">
+  <a href="#/"><img src="static/glyphicons-225-chevron-left.png" alt="Back to homepage"/></a>
+  <div class="noTracks" ng-show="profile.noTracks">
+    No songs saved. Once you Accio a song it will save to your profile for later.
+    <hr>
+  </div>
+  <div class="songDiv" ng-repeat="track in profile.tracks | orderBy: '-fields.timestamp'">
+    <div class="songCard">
+      <div class="imgDiv">
+        <img ng-src="[[track.fields.imageURL]]" alt="" />
+      </div>
+      <div class="fieldWrap">
+        <h3>[[track.fields.title]]</h3>
+        <h3>[[track.fields.artist]]</h3>
+        <h3>[[track.fields.album]]</h3>
+        <div class="buttonDiv">
+          <button type="button" name="button" ng-click="profile.delete(track)" class="deleteBtn">Delete</button>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
 </div>

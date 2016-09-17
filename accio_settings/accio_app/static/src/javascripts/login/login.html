@@ -1,6 +1,6 @@
-<div class="navBarWrapper">
+<div class="navBarWrapper navbar-fixed-top">
   <div class="noUserNav" ng-hide="login.user.user">
-    <h2>[[login.hello]]</h2>
+    <a class="logo" href="#/"><h2>[[login.hello]]</h2></a>
     <span class="link" ng-click="loginShow = !loginShow">Login</span>
     <!-- login -->
     <div class="loginWrapper" ng-show="loginShow">
@@ -47,7 +47,7 @@
 
   </div>
   <div class="userNav" ng-show="login.user.user">
-    <h2>[[login.hello]]</h2>
+    <a class="logo" href="#/"><h2>[[login.hello]]</h2></a>
     <span>Welcome [[login.user.username]]</span>
     |
     <a href="#/profile">Profile</a>
