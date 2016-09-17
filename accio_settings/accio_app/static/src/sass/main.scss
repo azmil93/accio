@@ -1,3 +1,27 @@
-h1 {
-  color: red;
+$blue: #005DFF;
+$black: #222;
+$red: #FF3919;
+$white: #FCFCFC;
+$green: #94CC06;
+$shadow: #000;
+
+body {
+  background-color: $black;
+  color: $green;
+  font-family: 'Archivo Narrow', sans-serif;
+  letter-spacing: 0.3em;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color:inherit;
+  text-decoration: none;
+}
+
+.link {
+  cursor: pointer;
+}
+
+@import "navbar"

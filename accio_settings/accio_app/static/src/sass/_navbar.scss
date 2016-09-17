@@ -1,0 +1,32 @@
+.navBarWrapper {
+  padding: 1em;
+}
+
+.noUserNav,
+.userNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  position: relative;
+  h2 {
+    margin-right: auto;
+  }
+  span,
+  a {
+    padding: 1em;
+    position: relative;
+  }
+}
+
+.loginWrapper,
+.registerWrap {
+  position: absolute;
+  margin: 0;
+  // width: 200%;
+  padding: 2em;
+  right: 0;
+  top: 60px;
+  background: $white;
+  box-shadow: 3px 3px 15px $shadow;
+}
