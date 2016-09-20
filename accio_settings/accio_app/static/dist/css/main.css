@@ -58,7 +58,7 @@ hr {
   box-shadow: 3px 3px 15px #000; }
 
 .profileWrapper {
-  padding-top: 1em; }
+  padding-top: 3em; }
 
 .songCard, .results {
   display: flex;
@@ -96,6 +96,22 @@ hr {
   justify-content: center;
   height: 50vh;
   font-size: 1.5em; }
+
+.searchDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.search {
+  border: none;
+  border-bottom: 2px solid #005DFF;
+  background: transparent;
+  width: 50%;
+  text-align: center;
+  color: lightgrey; }
+
+.search:focus {
+  outline: none; }
 
 .recordWrapper {
   position: absolute;
@@ -154,7 +170,13 @@ hr {
   box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC;
   z-index: 999;
   animation: logoDiv 3s infinite ease-in-out;
-  cursor: pointer; }
+  cursor: pointer;
+  text-align: center; }
+  .logoTop p {
+    color: #005DFF;
+    font-family: "Cinzel", serif;
+    margin: 0;
+    margin-top: 3em; }
 
 .logoBottom {
   margin: 0;

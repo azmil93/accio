@@ -1,5 +1,5 @@
 .profileWrapper {
-  padding-top: 1em;
+  padding-top: 3em;
 }
 
 .songCard {
@@ -44,4 +44,23 @@
   justify-content: center;
   height: 50vh;
   font-size: 1.5em;
+}
+
+.searchDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search {
+  border: none;
+  border-bottom: 2px solid $blue;
+  background: transparent;
+  width: 50%;
+  text-align: center;
+  color: lightgrey;
+}
+
+.search:focus {
+  outline: none;
 }

@@ -1,9 +1,13 @@
 <div class="profileWrapper">
+  <div class="searchDiv">
+    <img src="static/glyphicons-28-search.png" alt="" />
+    <input type="text" ng-model="search" class="search" placeholder="Search for song">
+  </div>
   <div class="noTracks" ng-show="profile.noTracks">
     No songs saved. Once you Accio a song it will save to your profile for later.
     <hr>
   </div>
-  <div class="songDiv" ng-repeat="track in profile.tracks | orderBy: '-fields.timestamp'">
+  <div class="songDiv" ng-repeat="track in profile.tracks | orderBy:'-fields.timestamp' | filter:search">
     <div class="songCard">
       <div class="imgDiv">
         <img ng-src="[[track.fields.imageURL]]" alt="" />
@@ -13,8 +17,8 @@
         <h3>[[track.fields.artist]]</h3>
         <h3>[[track.fields.album]]</h3>
         <div class="buttonDiv">
-          <a href="[[track.fields.spotify]]" target='_blank'><img src="static/Spotify_Icon_RGB_White.png" alt="Spotify"/></a>
-          <audio ng-src="[[track.fields.preview]]" controls></audio>
+          <a ng-show="[[track.fields.spotify]]" href="[[track.fields.spotify]]" target='_blank'><img src="static/Spotify_Icon_RGB_White.png" alt="Spotify"/></a>
+          <audio ng-show="[[track.fields.preview]]" ng-src="[[track.fields.preview]]" controls></audio>
           <button type="button" name="button" ng-click="profile.delete(track)" class="deleteBtn">Delete</button>
         </div>
       </div>
