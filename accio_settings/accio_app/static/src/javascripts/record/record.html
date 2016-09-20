@@ -53,7 +53,9 @@
         You need to grant permission for this application to USE your microphone.
       </div>
       <div class="logoWrap" ng-hide="listening">
-        <div class="logoTop" ng-click="listening = !listening;recorder.startRecord()"></div>
+        <div class="logoTop" ng-click="listening = !listening;recorder.startRecord()">
+          <p>To summon song info</p>
+        </div>
         <h1>Accio</h1>
         <div class="logoBottom" ng-click="listening = !listening;recorder.startRecord()">
           <p>Turn up volume</p>
