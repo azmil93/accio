@@ -1,0 +1,143 @@
+.logoWrap {
+  height: 400px;
+  width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    padding: 0;
+    margin: -80px;
+    font-size: 6em;
+    background: $black;
+    color: $blue;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 10px $white;
+    font-family: $logoFont;
+    animation: logo 3s infinite ease-in-out;
+  }
+}
+
+.logoTop {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  height: 35%;
+  border-radius: 200px 200px 0 0;
+  box-shadow: 0 0 15px $white, inset 0 0 10px $white;
+  z-index: 999;
+  animation: logoDiv 3s infinite ease-in-out;
+  cursor: pointer;
+}
+
+.logoBottom {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  height: 35%;
+  text-align: center;
+  border-radius: 0 0 200px 200px;
+  box-shadow: 0 0 15px $white, inset 0 0 10px $white;
+  z-index: 999;
+  animation: logoDiv 3s infinite ease-in;
+  cursor: pointer;
+  p {
+    color: $blue;
+    font-family: $logoFont;
+    margin: 0;
+  }
+  p:nth-child(1) {
+    margin-top: 6em;
+  }
+}
+
+@keyframes logoDiv {
+  0% {
+    box-shadow: 0 0 15px $white, inset 0 0 10px $white;
+  }
+  50% {
+    box-shadow: 0 0 30px $white, inset 0 0 20px $white;
+  }
+  100% {
+    box-shadow: 0 0 15px $white, inset 0 0 10px $white;
+  }
+}
+
+@keyframes logo {
+  0% {
+    text-shadow: 0 0 10px $white;
+  }
+  50% {
+    text-shadow: 0 0 20px $white;
+  }
+  100% {
+    text-shadow: 0 0 10px $white;
+  }
+}
+
+.wavewrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar {
+  width: 15px;
+  height: 5px;
+  margin: 0.5em;
+  background-color: $red;
+  animation: wave 1.5s infinite ease-in;
+}
+
+.two {
+  animation-delay: 0.2s;
+}
+
+.three {
+  animation-delay: 0.4s;
+}
+
+.four {
+  animation-delay: 0.6s;
+}
+
+.five {
+  animation-delay: 0.8s;
+}
+
+.six {
+  animation-delay: 1s;
+}
+
+.seven {
+  animation-delay: 1.2s;
+}
+
+.eight {
+  animation-delay: 1.4s;
+}
+
+.nine {
+  animation-delay: 1.6s;
+}
+
+.ten {
+  animation-delay: 1.8s;
+}
+
+
+@keyframes wave {
+  0% {
+    height: 5px;
+    background: $red;
+  }
+  50% {
+    height: 100px;
+    background: $blue;
+  }
+  100% {
+    height: 5px;
+    background: $red;
+  }
+}

@@ -4,6 +4,7 @@ $red: #FF3919;
 $white: #FCFCFC;
 $green: #94CC06;
 $shadow: #000;
+$logoFont: 'Cinzel', serif;
 
 body {
   background-color: $black;
@@ -32,3 +33,5 @@ hr {
 
 @import "navbar";
 @import "profile";
+@import "record";
+@import "animations";

@@ -3,6 +3,7 @@
   width: 100%;
   background: $black;
   padding: 0 1em;
+  border-bottom: 1px solid $blue;
 }
 
 .noUserNav,
@@ -14,6 +15,7 @@
   position: relative;
   .logo {
     margin-right: auto;
+    font-family: $logoFont;
   }
   span,
   a {
@@ -21,7 +23,6 @@
     position: relative;
     color: $green;
     text-decoration: none;
-    font-size: 1.5em;
   }
 }
 

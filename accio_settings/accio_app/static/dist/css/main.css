@@ -24,7 +24,8 @@ hr {
   padding: 1em;
   width: 100%;
   background: #222;
-  padding: 0 1em; }
+  padding: 0 1em;
+  border-bottom: 1px solid #005DFF; }
 
 .noUserNav,
 .userNav {
@@ -35,7 +36,8 @@ hr {
   position: relative; }
   .noUserNav .logo,
   .userNav .logo {
-    margin-right: auto; }
+    margin-right: auto;
+    font-family: "Cinzel", serif; }
   .noUserNav span,
   .noUserNav a,
   .userNav span,
@@ -43,8 +45,7 @@ hr {
     padding: 1em;
     position: relative;
     color: #94CC06;
-    text-decoration: none;
-    font-size: 1.5em; }
+    text-decoration: none; }
 
 .loginWrapper,
 .registerWrap {
@@ -56,7 +57,7 @@ hr {
   background: #FCFCFC;
   box-shadow: 3px 3px 15px #000; }
 
-.songCard {
+.songCard, .results {
   display: flex;
   justify-content: center;
   margin: 3em; }
@@ -84,3 +85,146 @@ hr {
   justify-content: center;
   height: 50vh;
   font-size: 1.5em; }
+
+.recordWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.logoWrapper {
+  width: 299px;
+  height: 299px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.results {
+  margin: 1em; }
+  .results .fieldWrap {
+    width: 50%; }
+
+.anonDiv {
+  width: 100%; }
+
+.warning {
+  width: 50%;
+  margin: auto;
+  text-align: justify; }
+
+.logoWrap {
+  height: 400px;
+  width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .logoWrap h1 {
+    padding: 0;
+    margin: -80px;
+    font-size: 6em;
+    background: #222;
+    color: #005DFF;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 10px #FCFCFC;
+    font-family: "Cinzel", serif;
+    animation: logo 3s infinite ease-in-out; }
+
+.logoTop {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  height: 35%;
+  border-radius: 200px 200px 0 0;
+  box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC;
+  z-index: 999;
+  animation: logoDiv 3s infinite ease-in-out;
+  cursor: pointer; }
+
+.logoBottom {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  height: 35%;
+  text-align: center;
+  border-radius: 0 0 200px 200px;
+  box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC;
+  z-index: 999;
+  animation: logoDiv 3s infinite ease-in;
+  cursor: pointer; }
+  .logoBottom p {
+    color: #005DFF;
+    font-family: "Cinzel", serif;
+    margin: 0; }
+  .logoBottom p:nth-child(1) {
+    margin-top: 6em; }
+
+@keyframes logoDiv {
+  0% {
+    box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC; }
+  50% {
+    box-shadow: 0 0 30px #FCFCFC, inset 0 0 20px #FCFCFC; }
+  100% {
+    box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC; } }
+
+@keyframes logo {
+  0% {
+    text-shadow: 0 0 10px #FCFCFC; }
+  50% {
+    text-shadow: 0 0 20px #FCFCFC; }
+  100% {
+    text-shadow: 0 0 10px #FCFCFC; } }
+
+.wavewrap {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.bar {
+  width: 15px;
+  height: 5px;
+  margin: 0.5em;
+  background-color: #FF3919;
+  animation: wave 1.5s infinite ease-in; }
+
+.two {
+  animation-delay: 0.2s; }
+
+.three {
+  animation-delay: 0.4s; }
+
+.four {
+  animation-delay: 0.6s; }
+
+.five {
+  animation-delay: 0.8s; }
+
+.six {
+  animation-delay: 1s; }
+
+.seven {
+  animation-delay: 1.2s; }
+
+.eight {
+  animation-delay: 1.4s; }
+
+.nine {
+  animation-delay: 1.6s; }
+
+.ten {
+  animation-delay: 1.8s; }
+
+@keyframes wave {
+  0% {
+    height: 5px;
+    background: #FF3919; }
+  50% {
+    height: 100px;
+    background: #005DFF; }
+  100% {
+    height: 5px;
+    background: #FF3919; } }

@@ -1,52 +1,93 @@
-<div class="" ng-show="record.showResults">
-  <p ng-show="record.noResults">
-    No Match could be found. Try turning up the volume to find a match
-  </p>
-  <p ng-show="record.showInfo">
-    Title: [[record.results.fields.title]]
-    Album: [[record.results.fields.album]]
-    Artist: [[record.results.fields.artist]]
-    <img src="[[record.results.fields.imageURL]]" alt="" />
-  </p>
-</div>
-
-<div class="" ng-show="record.anonUser">
-  <p>Create a user to save songs</p>
-  <form class="" action="index.html" method="post">
-    <input type="text" ng-model="record.createUser.first_name" placeholder="First Name">
-    <input type="text" ng-model="record.createUser.last_name" placeholder="Last Name">
-    <input type="text" ng-model="record.createUser.username" placeholder="Username">
-    <input type="email" ng-model="record.createUser.email" placeholder="Email">
-    <input type="password" ng-model="record.createUser.password" placeholder="Password">
-    <input type="button" name="name" value="Submit" ng-click="record.register()">
-  </form>
-</div>
-
-<div id="mainAudio"
-  ng-audio-recorder="recorder"
-  audio-model="record.recorded"
-  show-player="false"
-  time-limit="5"
-  on-record-complete=""
-  >
-  <div ng-if="recorder.isAvailable">
-    <div ng-if="recorder.status.isDenied === true" style="color: red;">
-      You need to grant permission for this application to USE your microphone.
+<div class="recordWrapper">
+  <div class="" ng-show="record.showResults">
+    <p ng-show="record.noResults">
+      No Match could be found. Try turning up the volume to find a match
+    </p>
+    <div ng-show="record.showInfo" class="results">
+      <div class="imgDiv">
+        <img src="[[record.results.fields.imageURL]]" alt="Cover Art"/>
+      </div>
+      <div class="fieldWrap">
+        <h3>[[record.results.fields.title]]</h3>
+        <h3>[[record.results.fields.album]]</h3>
+        <h3>[[record.results.fields.artist]]</h3>
+      </div>
     </div>
-    <button
-      ng-click="recorder.startRecord()"
-      type="button"
-      ng-disabled="recorder.status.isDenied === true || recorder.status.isRecording">
-      Start Record
-    </button>
   </div>
-  <div ng-if="!recorder.isAvailable">
-    Your browser does not support this feature natively, please use latest version of
-    <a href="https://www.google.com/chrome/browser" target="_blank">Google Chrome</a>
-    or
-    <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Mozilla Firefox</a>
-    . If you're on Safari or Internet Explorer, you can install
-    <a href="https://get.adobe.com/flashplayer/">Adobe Flash</a>
-    to use this feature.
+
+  <div class="" ng-show="record.anonUser">
+    <p>Create a user to save songs</p>
+    <form class="form-horizontal" action="index.html" method="post">
+      <div class="form-group">
+        <input type="text" ng-model="record.createUser.first_name" placeholder="First Name" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="record.createUser.last_name" placeholder="Last Name" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="record.createUser.username" placeholder="Username" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="email" ng-model="record.createUser.email" placeholder="Email" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="password" ng-model="record.createUser.password" placeholder="Password" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="button" name="name" value="Submit" ng-click="record.register()" class="form-control">
+      </div>
+    </form>
+  </div>
+
+  <div id="mainAudio"
+    ng-audio-recorder="recorder"
+    audio-model="record.recorded"
+    show-player="false"
+    time-limit="5"
+    on-record-complete=""
+    ng-class="recorder.status.isRecording ? 'record' : 'none'"
+    ng-hide="record.showResults"
+    >
+    <div ng-if="recorder.isAvailable">
+      <div ng-if="recorder.status.isDenied === true" style="color: red;">
+        You need to grant permission for this application to USE your microphone.
+      </div>
+      <div class="logoWrap" ng-hide="recorder.status.isRecording">
+        <div class="logoTop" ng-click="recorder.startRecord();"></div>
+        <h1>Accio</h1>
+        <div class="logoBottom" ng-click="recorder.startRecord();">
+          <p>Turn up volume</p>
+          <p>Click here</p>
+        </div>
+      </div>
+      <!-- <button
+        ng-click="recorder.startRecord();"
+        type="button"
+        ng-disabled="recorder.status.isDenied === true || recorder.status.isRecording">
+        Start Record
+      </button> -->
+    </div>
+    <div class="waveWrap" ng-show="recorder.status.isRecording">
+      <span class="bar one"></span>
+      <span class="bar two"></span>
+      <span class="bar three"></span>
+      <span class="bar four"></span>
+      <span class="bar five"></span>
+      <span class="bar six"></span>
+      <span class="bar seven"></span>
+      <span class="bar eight"></span>
+      <span class="bar nine"></span>
+      <span class="bar ten"></span>
+    </div>
+    <div ng-if="!recorder.isAvailable" class="warning">
+      Your browser does not support this feature natively, please use latest version of
+      <a href="https://www.google.com/chrome/browser" target="_blank">Google Chrome</a>
+      or
+      <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Mozilla Firefox</a>
+      . If you're on Safari or Internet Explorer, you can install
+      <a href="https://get.adobe.com/flashplayer/">Adobe Flash</a>
+      to use this feature.
+      <hr>
+    </div>
   </div>
 </div>
