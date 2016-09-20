@@ -108,34 +108,6 @@ angular.module('Accio_app').config(['$routeProvider', function ($routeProvider) 
 }]);
 'use strict';
 
-angular.module('Accio_app').controller('ProfileCtrl', ['DataFactory', '$location', 'UserFactory', function (DataFactory, $location, UserFactory) {
-  var profile = this;
-  UserFactory.userAuth().then(function (res) {
-    return profile.username = res.username;
-  });
-  profile.title = 'welcome';
-  profile.getTracks = function () {
-    DataFactory.getUserTracks().then(function (res) {
-      if (res.length >= 1) {
-        profile.tracks = res;
-      } else {
-        profile.noTracks = true;
-        profile.response = res.error;
-      }
-    });
-  };
-  profile.getTracks();
-
-  profile.record = function () {
-    $location.path('/');
-  };
-
-  profile.delete = function (track) {
-    DataFactory.deleteTrack(track.pk).then(profile.getTracks());
-  };
-}]);
-'use strict';
-
 angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location', 'UserFactory', '$window', function (DataFactory, $location, UserFactory, $window) {
   var login = this;
   login.hello = "Accio";
@@ -172,7 +144,35 @@ angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location',
 }]);
 'use strict';
 
-angular.module('Accio_app').controller('RecordCtrl', ['$interval', '$http', 'DataFactory', '$location', function ($interval, $http, DataFactory, $location) {
+angular.module('Accio_app').controller('ProfileCtrl', ['DataFactory', '$location', 'UserFactory', function (DataFactory, $location, UserFactory) {
+  var profile = this;
+  UserFactory.userAuth().then(function (res) {
+    return profile.username = res.username;
+  });
+  profile.title = 'welcome';
+  profile.getTracks = function () {
+    DataFactory.getUserTracks().then(function (res) {
+      if (res.length >= 1) {
+        profile.tracks = res;
+      } else {
+        profile.noTracks = true;
+        profile.response = res.error;
+      }
+    });
+  };
+  profile.getTracks();
+
+  profile.record = function () {
+    $location.path('/');
+  };
+
+  profile.delete = function (track) {
+    DataFactory.deleteTrack(track.pk).then(profile.getTracks());
+  };
+}]);
+'use strict';
+
+angular.module('Accio_app').controller('RecordCtrl', ['$interval', '$http', 'DataFactory', '$location', '$window', function ($interval, $http, DataFactory, $location, $window) {
   var record = this;
 
   record.int = $interval(function () {
@@ -204,7 +204,8 @@ angular.module('Accio_app').controller('RecordCtrl', ['$interval', '$http', 'Dat
   record.register = function () {
     DataFactory.registerUser(record.createUser).then(function (res) {
       DataFactory.updateUser(record.results.pk).then(function (res) {
-        return $location.path('/profile');
+        $window.location.reload();
+        $location.path('/profile');
       });
     });
   };
