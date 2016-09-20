@@ -20,7 +20,7 @@ def createTrack(data, user):
     try:
         imageUrl = spotifyJson['tracks']['items'][0]['album']['images'][1]['url']
     except IndexError:
-        imageUrl = "static/no_image_placeholder.png"
+        imageUrl = "static/img/no_image_placeholder.png"
 
     try:
         previewUrl = spotifyJson['tracks']['items'][0]['preview_url']
