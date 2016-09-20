@@ -52,12 +52,12 @@
       <div ng-if="recorder.status.isDenied === true" style="color: red;">
         You need to grant permission for this application to USE your microphone.
       </div>
-      <div class="logoWrap" ng-hide="listening">
-        <div class="logoTop" ng-click="listening = !listening;recorder.startRecord()">
+      <div class="logoWrap" ng-hide="listening" ng-click="listening = !listening;recorder.startRecord()">
+        <div class="logoTop" >
           <p>To summon song info</p>
         </div>
         <h1>Accio</h1>
-        <div class="logoBottom" ng-click="listening = !listening;recorder.startRecord()">
+        <div class="logoBottom">
           <p>Turn up volume</p>
           <p>Click here</p>
         </div>
@@ -74,12 +74,6 @@
         <span class="bar nine"></span>
         <span class="bar ten"></span>
       </div>
-      <!-- <button
-        ng-click="recorder.startRecord();"
-        type="button"
-        ng-disabled="recorder.status.isDenied === true || recorder.status.isRecording">
-        Start Record
-      </button> -->
     </div>
     <div ng-if="!recorder.isAvailable" class="warning">
       Your browser does not support this feature natively, please use latest version of

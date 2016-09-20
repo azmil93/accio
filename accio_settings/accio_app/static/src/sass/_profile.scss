@@ -6,6 +6,9 @@
   display: flex;
   justify-content: center;
   margin: 3em;
+  .imgDiv {
+    border: 1px solid $white;
+  }
 }
 
 .fieldWrap {

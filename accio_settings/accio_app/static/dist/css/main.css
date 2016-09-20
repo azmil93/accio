@@ -64,6 +64,8 @@ hr {
   display: flex;
   justify-content: center;
   margin: 3em; }
+  .songCard .imgDiv, .results .imgDiv {
+    border: 1px solid #FCFCFC; }
 
 .fieldWrap {
   display: flex;
@@ -149,12 +151,13 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+  cursor: pointer; }
   .logoWrap h1 {
     padding: 0;
-    margin: -80px;
+    margin: -46px;
     font-size: 6em;
-    background: #222;
+    background: transparent;
     color: #005DFF;
     letter-spacing: 0.1em;
     text-shadow: 0 0 10px #FCFCFC;
@@ -168,9 +171,7 @@ hr {
   height: 35%;
   border-radius: 200px 200px 0 0;
   box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC;
-  z-index: 999;
   animation: logoDiv 3s infinite ease-in-out;
-  cursor: pointer;
   text-align: center; }
   .logoTop p {
     color: #005DFF;
@@ -186,9 +187,7 @@ hr {
   text-align: center;
   border-radius: 0 0 200px 200px;
   box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC;
-  z-index: 999;
-  animation: logoDiv 3s infinite ease-in;
-  cursor: pointer; }
+  animation: logoDiv 3s infinite ease-in; }
   .logoBottom p {
     color: #005DFF;
     font-family: "Cinzel", serif;
