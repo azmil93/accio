@@ -1,7 +1,7 @@
 body {
   background-color: #222;
   color: #94CC06;
-  font-family: 'Archivo Narrow', sans-serif;
+  font-family: 'Oswald', sans-serif;
   letter-spacing: 0.3em; }
 
 a {
@@ -68,6 +68,9 @@ hr {
   flex-direction: column;
   width: 30%;
   padding: 1em; }
+  .fieldWrap h3 {
+    font-size: 1.5em;
+    font-weight: 300; }
 
 .buttonDiv {
   margin-top: auto; }

@@ -46,19 +46,31 @@
     time-limit="5"
     on-record-complete=""
     ng-class="recorder.status.isRecording ? 'record' : 'none'"
-    ng-hide="record.showResults"
+    ng-if="record.showResults !== true"
     >
-    <div ng-if="recorder.isAvailable">
+    <div ng-if="recorder.isAvailable" >
       <div ng-if="recorder.status.isDenied === true" style="color: red;">
         You need to grant permission for this application to USE your microphone.
       </div>
-      <div class="logoWrap" ng-hide="recorder.status.isRecording">
-        <div class="logoTop" ng-click="recorder.startRecord();"></div>
+      <div class="logoWrap" ng-hide="listening">
+        <div class="logoTop" ng-click="listening = !listening;recorder.startRecord()"></div>
         <h1>Accio</h1>
-        <div class="logoBottom" ng-click="recorder.startRecord();">
+        <div class="logoBottom" ng-click="listening = !listening;recorder.startRecord()">
           <p>Turn up volume</p>
           <p>Click here</p>
         </div>
+      </div>
+      <div class="waveWrap" ng-show="listening">
+        <span class="bar one"></span>
+        <span class="bar two"></span>
+        <span class="bar three"></span>
+        <span class="bar four"></span>
+        <span class="bar five"></span>
+        <span class="bar six"></span>
+        <span class="bar seven"></span>
+        <span class="bar eight"></span>
+        <span class="bar nine"></span>
+        <span class="bar ten"></span>
       </div>
       <!-- <button
         ng-click="recorder.startRecord();"
@@ -66,18 +78,6 @@
         ng-disabled="recorder.status.isDenied === true || recorder.status.isRecording">
         Start Record
       </button> -->
-    </div>
-    <div class="waveWrap" ng-show="recorder.status.isRecording">
-      <span class="bar one"></span>
-      <span class="bar two"></span>
-      <span class="bar three"></span>
-      <span class="bar four"></span>
-      <span class="bar five"></span>
-      <span class="bar six"></span>
-      <span class="bar seven"></span>
-      <span class="bar eight"></span>
-      <span class="bar nine"></span>
-      <span class="bar ten"></span>
     </div>
     <div ng-if="!recorder.isAvailable" class="warning">
       Your browser does not support this feature natively, please use latest version of
