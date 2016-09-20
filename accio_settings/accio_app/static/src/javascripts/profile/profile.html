@@ -1,5 +1,4 @@
 <div class="profileWrapper">
-  <a href="#/"><img src="static/glyphicons-225-chevron-left.png" alt="Back to homepage"/></a>
   <div class="noTracks" ng-show="profile.noTracks">
     No songs saved. Once you Accio a song it will save to your profile for later.
     <hr>
@@ -14,6 +13,8 @@
         <h3>[[track.fields.artist]]</h3>
         <h3>[[track.fields.album]]</h3>
         <div class="buttonDiv">
+          <a href="[[track.fields.spotify]]" target='_blank'><img src="static/Spotify_Icon_RGB_White.png" alt="Spotify"/></a>
+          <audio ng-src="[[track.fields.preview]]" controls></audio>
           <button type="button" name="button" ng-click="profile.delete(track)" class="deleteBtn">Delete</button>
         </div>
       </div>

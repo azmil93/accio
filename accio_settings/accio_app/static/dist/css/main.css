@@ -57,6 +57,9 @@ hr {
   background: #FCFCFC;
   box-shadow: 3px 3px 15px #000; }
 
+.profileWrapper {
+  padding-top: 1em; }
+
 .songCard, .results {
   display: flex;
   justify-content: center;
@@ -67,18 +70,23 @@ hr {
   justify-content: center;
   flex-direction: column;
   width: 30%;
-  padding: 1em; }
+  padding-left: 1em; }
   .fieldWrap h3 {
     font-size: 1.5em;
     font-weight: 300; }
 
 .buttonDiv {
-  margin-top: auto; }
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
   .buttonDiv .deleteBtn {
     background-color: #FF3919;
     color: #FCFCFC;
     border: none;
     font-size: 1.25em; }
+  .buttonDiv audio {
+    width: 70%; }
 
 .noTracks {
   display: flex;

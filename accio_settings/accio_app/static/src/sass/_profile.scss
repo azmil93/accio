@@ -1,3 +1,7 @@
+.profileWrapper {
+  padding-top: 1em;
+}
+
 .songCard {
   display: flex;
   justify-content: center;
@@ -9,7 +13,7 @@
   justify-content: center;
   flex-direction: column;
   width: 30%;
-  padding: 1em;
+  padding-left: 1em;
   h3 {
     font-size: 1.5em;
     font-weight: 300;
@@ -18,11 +22,17 @@
 
 .buttonDiv {
   margin-top:auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   .deleteBtn {
     background-color: $red;
     color: $white;
     border: none;
     font-size: 1.25em;
+  }
+  audio {
+    width: 70%;
   }
 }
 
