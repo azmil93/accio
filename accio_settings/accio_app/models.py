@@ -9,6 +9,8 @@ class Track(models.Model):
     imageURL = models.CharField(max_length=200, default='')
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
+    spotify = models.CharField(max_length=200, default='')
+    preview = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return self.title + ' by ' + self.artist
