@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('Accio_app', ['angularAudioRecorder', 'ngRoute']).config(['$interpolateProvider', '$httpProvider', 'recorderServiceProvider', function ($interpolateProvider, $httpProvider, recorderServiceProvider) {
+angular.module('Accio_app', ['angularAudioRecorder', 'ngRoute']).config(['$interpolateProvider', '$httpProvider', 'recorderServiceProvider', '$sceDelegateProvider', function ($interpolateProvider, $httpProvider, recorderServiceProvider, $sceDelegateProvider) {
   'use strict';
 
   $interpolateProvider.startSymbol('[[').endSymbol(']]');
   $httpProvider.defaults.xsrfCookieName = 'csrftoken';
   $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   recorderServiceProvider.forceSwf(false).withMp3Conversion(false);
+  $sceDelegateProvider.resourceUrlWhitelist(['self', 'https://p.scdn.co/**']);
 }]);
 'use strict';
 
@@ -107,6 +108,34 @@ angular.module('Accio_app').config(['$routeProvider', function ($routeProvider) 
 }]);
 'use strict';
 
+angular.module('Accio_app').controller('ProfileCtrl', ['DataFactory', '$location', 'UserFactory', function (DataFactory, $location, UserFactory) {
+  var profile = this;
+  UserFactory.userAuth().then(function (res) {
+    return profile.username = res.username;
+  });
+  profile.title = 'welcome';
+  profile.getTracks = function () {
+    DataFactory.getUserTracks().then(function (res) {
+      if (res.length >= 1) {
+        profile.tracks = res;
+      } else {
+        profile.noTracks = true;
+        profile.response = res.error;
+      }
+    });
+  };
+  profile.getTracks();
+
+  profile.record = function () {
+    $location.path('/');
+  };
+
+  profile.delete = function (track) {
+    DataFactory.deleteTrack(track.pk).then(profile.getTracks());
+  };
+}]);
+'use strict';
+
 angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location', 'UserFactory', '$window', function (DataFactory, $location, UserFactory, $window) {
   var login = this;
   login.hello = "Accio";
@@ -139,34 +168,6 @@ angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location',
         $window.location.reload();
       }
     });
-  };
-}]);
-'use strict';
-
-angular.module('Accio_app').controller('ProfileCtrl', ['DataFactory', '$location', 'UserFactory', function (DataFactory, $location, UserFactory) {
-  var profile = this;
-  UserFactory.userAuth().then(function (res) {
-    return profile.username = res.username;
-  });
-  profile.title = 'welcome';
-  profile.getTracks = function () {
-    DataFactory.getUserTracks().then(function (res) {
-      if (res.length >= 1) {
-        profile.tracks = res;
-      } else {
-        profile.noTracks = true;
-        profile.response = res.error;
-      }
-    });
-  };
-  profile.getTracks();
-
-  profile.record = function () {
-    $location.path('/');
-  };
-
-  profile.delete = function (track) {
-    DataFactory.deleteTrack(track.pk).then(profile.getTracks());
   };
 }]);
 'use strict';
