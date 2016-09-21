@@ -13,6 +13,7 @@ function($interval, $http, DataFactory, $location, $window) {
             if(res.status.code === 1001) {
               record.noResults = true;
             }
+            record.showResults = true;
           }
           catch(err) {
             record.results = res[0];
@@ -20,9 +21,9 @@ function($interval, $http, DataFactory, $location, $window) {
             if (record.results.fields.user === 0) {
               record.anonUser = true;
             }
+            record.showResults = true;
           }
         });
-      record.showResults = true;
       record.stopInterval();
     }
   }, 1000);

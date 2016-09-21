@@ -184,15 +184,16 @@ angular.module('Accio_app').controller('RecordCtrl', ['$interval', '$http', 'Dat
           if (res.status.code === 1001) {
             record.noResults = true;
           }
+          record.showResults = true;
         } catch (err) {
           record.results = res[0];
           record.showInfo = true;
           if (record.results.fields.user === 0) {
             record.anonUser = true;
           }
+          record.showResults = true;
         }
       });
-      record.showResults = true;
       record.stopInterval();
     }
   }, 1000);

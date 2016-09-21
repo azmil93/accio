@@ -124,13 +124,6 @@ hr {
   justify-content: center;
   align-items: center; }
 
-.logoWrapper {
-  width: 299px;
-  height: 299px;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
 .results {
   margin: 3em; }
   .results .fieldWrap {
