@@ -131,8 +131,14 @@
     height: 5px;
     background: $red;
   }
+  25% {
+    background: $blue;
+  }
   50% {
-    height: 100px;
+    height: 150px;
+    background: $green;
+  }
+  75% {
     background: $blue;
   }
   100% {

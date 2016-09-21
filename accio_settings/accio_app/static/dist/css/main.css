@@ -250,8 +250,12 @@ hr {
   0% {
     height: 5px;
     background: #FF3919; }
+  25% {
+    background: #005DFF; }
   50% {
-    height: 100px;
+    height: 150px;
+    background: #94CC06; }
+  75% {
     background: #005DFF; }
   100% {
     height: 5px;
