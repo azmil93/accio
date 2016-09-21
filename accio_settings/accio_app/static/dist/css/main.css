@@ -132,7 +132,7 @@ hr {
   align-items: center; }
 
 .results {
-  margin: 1em; }
+  margin: 3em; }
   .results .fieldWrap {
     width: 50%; }
 
@@ -155,7 +155,7 @@ hr {
   cursor: pointer; }
   .logoWrap h1 {
     padding: 0;
-    margin: -46px;
+    margin: -90px;
     font-size: 6em;
     background: transparent;
     color: #005DFF;
@@ -173,11 +173,13 @@ hr {
   box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC;
   animation: logoDiv 3s infinite ease-in-out;
   text-align: center; }
-  .logoTop p {
-    color: #005DFF;
-    font-family: "Cinzel", serif;
-    margin: 0;
-    margin-top: 3em; }
+
+.instruction {
+  font-family: "Cinzel", serif;
+  text-align: center;
+  margin-bottom: 3em;
+  color: #005DFF;
+  width: 120%; }
 
 .logoBottom {
   margin: 0;
@@ -188,12 +190,6 @@ hr {
   border-radius: 0 0 200px 200px;
   box-shadow: 0 0 15px #FCFCFC, inset 0 0 10px #FCFCFC;
   animation: logoDiv 3s infinite ease-in; }
-  .logoBottom p {
-    color: #005DFF;
-    font-family: "Cinzel", serif;
-    margin: 0; }
-  .logoBottom p:nth-child(1) {
-    margin-top: 6em; }
 
 @keyframes logoDiv {
   0% {

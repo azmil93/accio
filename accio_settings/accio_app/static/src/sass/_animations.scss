@@ -10,7 +10,7 @@
 
   h1 {
     padding: 0;
-    margin: -46px;
+    margin: -90px;
     font-size: 6em;
     background: transparent;
     color: $blue;
@@ -30,12 +30,14 @@
   box-shadow: 0 0 15px $white, inset 0 0 10px $white;
   animation: logoDiv 3s infinite ease-in-out;
   text-align: center;
-  p {
-    color: $blue;
-    font-family: $logoFont;
-    margin: 0;
-    margin-top: 3em;
-  }
+}
+
+.instruction {
+  font-family: $logoFont;
+  text-align: center;
+  margin-bottom: 3em;
+  color: $blue;
+  width: 120%;
 }
 
 .logoBottom {
@@ -47,14 +49,6 @@
   border-radius: 0 0 200px 200px;
   box-shadow: 0 0 15px $white, inset 0 0 10px $white;
   animation: logoDiv 3s infinite ease-in;
-  p {
-    color: $blue;
-    font-family: $logoFont;
-    margin: 0;
-  }
-  p:nth-child(1) {
-    margin-top: 6em;
-  }
 }
 
 @keyframes logoDiv {
