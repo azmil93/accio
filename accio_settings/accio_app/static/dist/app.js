@@ -141,6 +141,11 @@ angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location',
       }
     });
   };
+
+  login.reload = function () {
+    $window.location.reload();
+    $location.path('/');
+  };
 }]);
 'use strict';
 

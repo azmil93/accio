@@ -1,6 +1,6 @@
 <div class="navBarWrapper navbar-fixed-top">
   <div class="noUserNav" ng-hide="login.user.user">
-    <a class="logo" href="#/"><h2>[[login.hello]]</h2></a>
+    <a class="logo" ng-click="login.reload()"><h2>[[login.hello]]</h2></a>
     <span class="link" ng-click="loginShow = !loginShow">Login</span>
     <!-- login -->
     <div class="loginWrapper" ng-show="loginShow">
