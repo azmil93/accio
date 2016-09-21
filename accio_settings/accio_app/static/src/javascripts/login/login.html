@@ -1,6 +1,6 @@
 <div class="navBarWrapper navbar-fixed-top">
   <div class="noUserNav" ng-hide="login.user.user">
-    <a class="logo" href="/" ng-click="login.reload()"><h2>[[login.hello]]</h2></a>
+    <a class="logo" href="#/"><h2>[[login.hello]]</h2></a>
     <span class="link" ng-click="loginShow = !loginShow">Login</span>
     <!-- login -->
     <div class="loginWrapper" ng-show="loginShow">
@@ -40,14 +40,14 @@
           <input type="button" name="name" value="Submit" ng-click="login.register()" class="form-control">
         </div>
         <div class="form-group">
-          <input type="button" name="name" value="Cancel" ng-click="registerShow != registerShow" class="form-control">
+          <input type="button" name="name" value="Cancel" ng-click="registerShow = !registerShow" class="form-control">
         </div>
       </form>
     </div>
 
   </div>
   <div class="userNav" ng-show="login.user.user">
-    <a class="logo" href="/" ng-click="login.reload()"><h2>[[login.hello]]</h2></a>
+    <a class="logo" href="#/"><h2>[[login.hello]]</h2></a>
     <span>Welcome [[login.user.username]]</span>
     |
     <a href="#/profile">Profile</a>

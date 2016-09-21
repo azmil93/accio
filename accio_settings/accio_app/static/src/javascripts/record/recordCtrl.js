@@ -40,4 +40,9 @@ function($interval, $http, DataFactory, $location, $window) {
       });
     });
   };
+
+  record.reload = () => {
+    $window.location.reload();
+  };
+
 }]);

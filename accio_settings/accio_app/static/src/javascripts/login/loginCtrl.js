@@ -37,9 +37,4 @@ function(DataFactory, $location, UserFactory, $window) {
       }
     });
   };
-
-  login.reload = () => {
-    $window.location.reload();
-    $location.path('/');
-  };
 }]);

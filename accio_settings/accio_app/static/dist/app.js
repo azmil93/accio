@@ -141,11 +141,6 @@ angular.module('Accio_app').controller('LoginCtrl', ['DataFactory', '$location',
       }
     });
   };
-
-  login.reload = function () {
-    $window.location.reload();
-    $location.path('/');
-  };
 }]);
 'use strict';
 
@@ -213,5 +208,9 @@ angular.module('Accio_app').controller('RecordCtrl', ['$interval', '$http', 'Dat
         $location.path('/profile');
       });
     });
+  };
+
+  record.reload = function () {
+    $window.location.reload();
   };
 }]);
