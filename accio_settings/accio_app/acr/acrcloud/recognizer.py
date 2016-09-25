@@ -217,21 +217,21 @@ class ACRCloudStatusCode:
         return json.dumps(res)
 
 
-if __name__ == '__main__':
-    config = {
-        'host':'us-west-2.api.acrcloud.com',
-        'access_key':'e3f84d1315c878aa0880ab2c6a15f50e',
-        'access_secret':'rfZNTVCY1Oqu1TjTPYSTr9On4usoRubikAMiuwBv',
-        'timeout':5
-    }
+# if __name__ == '__main__':
+#     config = {
+#         'host':'ap-southeast-1.api.acrcloud.com',
+#         'access_key':'XXXXXXXX',
+#         'access_secret':'XXXXXXXX',
+        # 'timeout':5
+    # }
 
-
-    re = ACRCloudRecognizer(config)
-    buf = open(sys.argv[1], 'rb').read()
+    
+    # re = ACRCloudRecognizer(config)
+    # buf = open(sys.argv[1], 'rb').read()
     #buft = buf[1024000:192000+1024001]
 
-    acrcloud_extr_tool.set_debug()
+    # acrcloud_extr_tool.set_debug()
     #print(acrcloud_extr_tool.__doc__)
     #print(re.recognize_by_file(sys.argv[1], 10))
-    print(re.recognize_by_filebuffer(buf, 10))
+    # print(re.recognize_by_filebuffer(buf, 10))
     #print re.recognize(buft)
